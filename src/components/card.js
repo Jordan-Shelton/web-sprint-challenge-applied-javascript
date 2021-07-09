@@ -17,7 +17,31 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  const card = document.createElement('div')
+  const headline = document.createElement('div')
+  const author = document.createElement('div')
+  const imgCont = document.createElement('div')
+  const authorPhoto = document.createElement('img')
+  const authorName = document.createElement('span')
+
+  card.appendChild(headline)
+  card.appendChild(author)
+  author.appendChild(imgCont)
+  author.appendChild(authorName)
+  imgCont.appendChild(authorPhoto)
+
+  card.classList.add('card')
+  headline.classList.add('headline')
+  author.classList.add('author')
+  imgCont.classList.add('img-container')
+
+  headline.textContent = `${headline}`
+  authorPhoto.src = `${authorPhoto}`
+  authorName.textContent = `${authorName}`
+
+  headline.addEventListener('click', () => console.log(headline.textContent))
 }
+
 
 const cardAppender = (selector) => {
   // TASK 6
