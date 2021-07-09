@@ -27,7 +27,8 @@ const Header = (title, date, temp) => {
   mainTitle.textContent = `${title}`;
   span1.textContent = `${date}`;
   span2.textContent = `${temp}`;
-  return div
+  return div//I completely rewrote all of my code because this originally would have been header and
+  //I spelt it haeder. I found it after looking at a screenshot of the code fml. Thought you might find this funny.
 }
 
 const headerAppender = (selector) => {
