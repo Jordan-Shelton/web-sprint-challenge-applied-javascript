@@ -11,25 +11,23 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  const div = document.createElement("div");
+  const span1 = document.createElement("span");
+  const mainTitle = document.createElement("h1");
+  const span2 = document.createElement("span");
+  
+  div.appendChild(span1);
+  div.appendChild(mainTitle);
+  div.appendChild(span2);
 
-  const header = document.createElement('div')
-  const da = document.createElement('span')
-  const ti = document.createElement('h1')
-  const te = document.createElement('span')
+  div.classList.add("header");
+  span1.classList.add("date");
+  span2.classList.add("temp");
 
-  header.appendChild(da)
-  header.appendChild(ti)
-  header.appendChild(te)
-
-  header.classList.add('header')
-  da.classList.add('date')
-  te.classList.add('temp')
-
-  da.textContent = date
-  ti.textContent = title
-  te.textContent = temp
-
-  return header
+  mainTitle.textContent = `${title}`;
+  span1.textContent = `${date}`;
+  span2.textContent = `${temp}`;
+  return div
 }
 
 const headerAppender = (selector) => {
