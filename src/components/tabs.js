@@ -21,6 +21,15 @@ const Tabs = (topics) => {
   topics.appendChild(javascript)
   topics.appendChild(bootstrap)
   topics.appendChild(technology)
+
+  topics.classList.add('topics')
+  javascript.classList.add('tab')
+  bootstrap.classList.add('tab')
+  technology.classList.add('tab')
+
+  javascript.textContent = javascript
+  bootstrap.textContent = bootstrap
+  technology.textContent = technology
 }
 
 const tabsAppender = (selector) => {
