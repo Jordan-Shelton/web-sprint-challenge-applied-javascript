@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +19,31 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  const div = document.createElement("div");
+  const divHead = document.createElement("div");
+  const divAuth = document.createElement("div");
+  const divImg = document.createElement("div");
+  const img = document.createElement("img");
+  const span = document.createElement("span");
+  div.classList.add("card");
+  divHead.classList.add("headline");
+  divAuth.classList.add("author");
+  divImg.classList.add("img-container");
+  img.setAttribute('src', article["authorPhoto"]);
+  
+  divHead.textContent = article["headline"];
+  span.textContent = `By ${article["authorName"]}`
+
+  div.appendChild(divHead);
+  div.appendChild(divAuth);
+  divAuth.appendChild(divImg);
+  divImg.appendChild(img);
+  divAuth.appendChild(span);
+
+  div.addEventListener('click', event => {
+    console.log(article["headline"]);
+  })
+  return div;
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +55,35 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  axios.get("https://lambda-times-api.herokuapp.com/articles")
+  .then((res) => {
+    const domElement = document.querySelector(selector);
+    
+    const arrj = res.data.articles.javascript;
+    for(let i=0; i<arrj.length;i++){
+      domElement.appendChild(Card(arrj[i]));
+    }
+    const arrb = res.data.articles.bootstrap;
+    for(let i=0; i<arrb.length;i++){
+      domElement.appendChild(Card(arrb[i]));
+    }
+    const arrt = res.data.articles.technology;
+    for(let i=0; i<arrt.length;i++){
+      domElement.appendChild(Card(arrt[i]));
+    }
+    const arrq = res.data.articles.jquery;
+    for(let i=0; i<arrq.length;i++){
+      domElement.appendChild(Card(arrq[i]));
+    }
+    const arrn = res.data.articles.node;
+    for(let i=0; i<arrn.length;i++){
+      domElement.appendChild(Card(arrn[i]));
+    }
+    
+  })
+  .catch((err) => {
+    console.log(err, "error");
+  })
 }
 
 export { Card, cardAppender }

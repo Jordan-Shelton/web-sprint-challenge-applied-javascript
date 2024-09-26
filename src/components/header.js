@@ -11,6 +11,24 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  const div = document.createElement("div");
+  const span1 = document.createElement("span");
+  const mainTitle = document.createElement("h1");
+  const span2 = document.createElement("span");
+  
+  div.appendChild(span1);
+  div.appendChild(mainTitle);
+  div.appendChild(span2);
+
+  div.classList.add("header");
+  span1.classList.add("date");
+  span2.classList.add("temp");
+
+  mainTitle.textContent = `${title}`;
+  span1.textContent = `${date}`;
+  span2.textContent = `${temp}`;
+  return div//I completely rewrote all of my code because this originally would have been header and
+  //I spelt it haeder. I found it after looking at a screenshot of the code fml. Thought you might find this funny.
 }
 
 const headerAppender = (selector) => {
@@ -20,6 +38,11 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+
+  const domElement = document.querySelector(selector)
+  domElement.appendChild(Header("test title","test date","test temp"));
+
+  return domElement;
 }
 
 export { Header, headerAppender }
